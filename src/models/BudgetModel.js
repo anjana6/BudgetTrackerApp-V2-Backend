@@ -2,7 +2,7 @@ const { DATE } = require("sequelize");
 const sequelize = require("sequelize");
 
 module.exports = (sequelize,DataTypes) => {
-    const BudgetModel = sequelize.define('bugets',{
+    const BudgetModel = sequelize.define('budgets',{
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -17,7 +17,7 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.STRING(100),
             allowNull: false
         },
-        Date: {
+        date: {
             type: DataTypes.DATE,
             allowNull: false
         },
@@ -25,11 +25,15 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.TIME,
             allowNull: false
         },
+        title: {
+            type: DataTypes.STRING(100),
+            allowNull: false
+          },
         amount: {
             type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
-        started_at:{
+        created_at:{
             type: DataTypes.DATE,
             allowNull: false
         },
@@ -38,8 +42,8 @@ module.exports = (sequelize,DataTypes) => {
             allowNull: false
         }
     },{
-        createAt: 'created_at',
-        updatedAT: 'updated_at',
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
         freezeTableName: true
     })
     return BudgetModel;

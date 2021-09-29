@@ -17,7 +17,7 @@ module.exports = {
       type: Sequelize.STRING(100),
       allowNull: false
   },
-  Date: {
+  date: {
       type: Sequelize.DATE,
       allowNull: false
   },
@@ -25,11 +25,15 @@ module.exports = {
       type: Sequelize.TIME,
       allowNull: false
   },
+  title: {
+    type: Sequelize.STRING(100),
+    allowNull: false
+  },
   amount: {
       type: Sequelize.DECIMAL(10,2),
       allowNull: false
   },
-  started_at:{
+  created_at:{
       type: Sequelize.DATE,
       allowNull: false
   },

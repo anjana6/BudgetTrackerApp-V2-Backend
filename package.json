@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/register": "^7.15.3",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.13",
     "sequelize": "^6.6.5",

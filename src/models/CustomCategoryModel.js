@@ -1,7 +1,7 @@
 const sequelize = require("sequelize");
 
 module.exports = (sequelize,DataTypes) => {
-    const CategoryModel = sequelize.define('categories',{
+    const CustomCategoryModel = sequelize.define('custom_categories',{
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -30,5 +30,5 @@ module.exports = (sequelize,DataTypes) => {
         freezeTableName: true
     })
 
-    return CategoryModel;
+    return CustomCategoryModel;
 }

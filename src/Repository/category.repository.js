@@ -1,11 +1,17 @@
-const CategoryModel = require('../models').categories;
+const CustomCategoryModel = require('../models').custom_categories;
 
 class CategoryRepository{
-
-
     createCategory(body){
-        return CategoryModel.create(body);
+        return CustomCategoryModel.create(body);
+    }
+
+    updateCategory(categoryId,body){
+        return CustomCategoryModel.update(body,{where: {id: categoryId}});
+    }
+
+    deleteCategory(categoryId){
+        return CustomCategoryModel.destroy({where: {id: categoryId}})
     }
 }
 
-export default CategoryRepository();
+export default new CategoryRepository();

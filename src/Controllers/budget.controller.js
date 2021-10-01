@@ -22,10 +22,9 @@ class BudgetController{
 
     async fetchBudget(req,res) {
         try {
-            const budgetType = req.params.budgetType;
             const startDate = req.query.startDate;
             const endDate = req.query.endDate;
-            const response = await budgetService.fetchBudget(budgetType,startDate,endDate);
+            const response = await budgetService.fetchBudget(startDate,endDate);
             resHelper.successCustom(res,response)
         } catch (error) {
             console.log(error)

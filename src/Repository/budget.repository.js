@@ -20,10 +20,16 @@ class BugetRepository{
     }
 
     fetchBudget(budgetType,startDate,endDate){
-        return BudgetModel.findAll({where: {
+        return BudgetModel.findAll({
+            attributes: [
+                // specify an array where the first element is the SQL function and the second is the alias
+                [sequelize.fn('DISTINCT', sequelize.col('category')) ,'category'],
+        
+            ],
+            where: {
             budget_type: budgetType,
             date: {
-               [Op.between]: [moment(new Date(startDate)).startOf('day').format(),moment(new Date(endDate)).endOf('day').format()]
+               [Op.between]: [moment(Number(startDate)).startOf('day').format(),moment(Number(endDate)).endOf('day').format()]
             }
         },
         order: [
@@ -32,12 +38,13 @@ class BugetRepository{
     }
 
     fetchBudgetItem(budgetType,category,startDate,endDate){
-        console.log(startDate,endDate)
+        // console.log('**************',startDate,endDate)
+        // console.log(moment(Number(startDate)).startOf('day').format())
         return BudgetModel.findAll({where: {
             budget_type: budgetType,
             category: category,
             date: {
-                    [Op.between]: [moment(new Date(startDate)).startOf('day').format(),moment(new Date(endDate)).endOf('day').format()]
+                    [Op.between]: [moment(Number(startDate)).startOf('day').format(),moment(Number(endDate)).endOf('day').format()]
                  }
         }})
     }

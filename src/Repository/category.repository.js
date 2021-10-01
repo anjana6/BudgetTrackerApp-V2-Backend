@@ -5,6 +5,12 @@ class CategoryRepository{
         return CustomCategoryModel.create(body);
     }
 
+    fetchCategory(categoryType){
+        return CustomCategoryModel.findAll({where: {
+            category_type: categoryType
+        }});
+    }
+
     updateCategory(categoryId,body){
         return CustomCategoryModel.update(body,{where: {id: categoryId}});
     }

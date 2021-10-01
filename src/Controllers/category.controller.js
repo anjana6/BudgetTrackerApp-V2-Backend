@@ -11,6 +11,15 @@ class CategoryController{
         }
     }
 
+    async fetchCategory(req,res){
+        try {
+            const response = await categoryService.fetchCategory(req.params.categoryType);
+            resHelper.successCustom(res,response);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async updateCategory(req,res){
         try {
             const categoryId = req.params.categoryId;

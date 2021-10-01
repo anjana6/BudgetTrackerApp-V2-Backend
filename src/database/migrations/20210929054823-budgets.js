@@ -21,10 +21,6 @@ module.exports = {
       type: Sequelize.DATE,
       allowNull: false
   },
-  time: {
-      type: Sequelize.TIME,
-      allowNull: false
-  },
   title: {
     type: Sequelize.STRING(100),
     allowNull: false

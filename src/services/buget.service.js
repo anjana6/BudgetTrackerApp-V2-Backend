@@ -18,8 +18,10 @@ class BudgetServie{
         return {income,expense}
     }
 
-    fetchBudget(budgetType,startDate,endDate){
-        return budgetRepository.fetchBudget(budgetType,startDate,endDate)
+    async fetchBudget(startDate,endDate){
+        const expense =await budgetRepository.fetchBudget('expense',startDate,endDate);
+        const income = await budgetRepository.fetchBudget('income',startDate,endDate)
+        return  {expense,income}
     }
 
     async fetchBudgetItem(budgetType,category,startDate,endDate){

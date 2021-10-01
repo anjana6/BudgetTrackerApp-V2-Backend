@@ -5,6 +5,10 @@ class CategoryService{
         return categoryRepository.createCategory(requestBody);
     }
 
+    fetchCategory(categoryType){
+        return categoryRepository.fetchCategory(categoryType);
+    }
+
     updateCategory(categoryId,requestBody){
         return categoryRepository.updateCategory(categoryId,requestBody);
     }

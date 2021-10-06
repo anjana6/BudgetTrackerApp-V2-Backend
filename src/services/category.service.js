@@ -1,12 +1,18 @@
 import categoryRepository from "../Repository/category.repository"
 
 class CategoryService{
-    createCategory(requestBody){
-        return categoryRepository.createCategory(requestBody);
+    createCategory(userId,requestBody){
+        const {category_type,name} = requestBody;
+        const body = {
+            user_id: userId,
+            category_type,
+            name
+        }
+        return categoryRepository.createCategory(body);
     }
 
-    fetchCategory(categoryType){
-        return categoryRepository.fetchCategory(categoryType);
+    fetchCategory(userId,categoryType){
+        return categoryRepository.fetchCategory(userId,categoryType);
     }
 
     updateCategory(categoryId,requestBody){

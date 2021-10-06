@@ -15,6 +15,14 @@ class ResHelper{
         });
       }
 
+      unauthorized(res) {
+        res.status(405).send({
+          success: false,
+          message: 'Unauthorized',
+          data: null,
+        });
+      }
+
 }
 
 export default new ResHelper();

@@ -1,3 +1,4 @@
+import { response } from "express";
 import resHelper from "../Helpers/resHelper";
 import userService from "../services/user.service";
 
@@ -11,9 +12,10 @@ class UserController {
         }
     }
 
-    loginUser(req,res){
+    async loginUser(req,res){
         try {
-            
+            const response = await userService.logingUser(req.body);
+            resHelper.successCustom(res,response)
         } catch (error) {
             console.log(error)
         }

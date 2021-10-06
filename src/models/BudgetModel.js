@@ -9,6 +9,10 @@ module.exports = (sequelize,DataTypes) => {
             primaryKey: true,
             allowNull: true
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         budget_type: {
             type: DataTypes.ENUM('expense','income'),
             allowNull: false
@@ -41,6 +45,10 @@ module.exports = (sequelize,DataTypes) => {
         createdAt: 'created_at',
         updatedAt: 'updated_at',
         freezeTableName: true
-    })
+    });
+
+    BudgetModel.associate = function (models) {
+        BudgetModel.belongsTo(models.users, {foreignKey: "user_id"});
+      };
     return BudgetModel;
 }

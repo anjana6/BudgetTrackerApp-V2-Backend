@@ -8,6 +8,10 @@ module.exports = (sequelize,DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         category_type: {
             type: DataTypes.ENUM('expense','income'),
             allowNull: false

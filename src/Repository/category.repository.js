@@ -5,8 +5,9 @@ class CategoryRepository{
         return CustomCategoryModel.create(body);
     }
 
-    fetchCategory(categoryType){
+    fetchCategory(userId,categoryType){
         return CustomCategoryModel.findAll({where: {
+            user_id: userId,
             category_type: categoryType
         }});
     }

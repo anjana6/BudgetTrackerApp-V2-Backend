@@ -9,6 +9,14 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
     },
+    user_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: "users",
+        key: "id",
+      },
+    },
     category_type: {
       type: Sequelize.ENUM('expense','income'),
       allowNull: false

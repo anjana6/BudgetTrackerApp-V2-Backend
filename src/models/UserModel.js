@@ -32,7 +32,12 @@ module.exports = (sequelize,DataTypes) => {
         createdAt:'created_at',
         updatedAt:'updated_at',
         freezeTabelName: true
-    })
+    });
+
+    UserModel.associate = function (models) {
+      UserModel.hasMany(models.budgets,{foreignKey: "user_id"});
+      UserModel.hasMany(models.custom_categories,{foreignKey: "user_id"})
+    };
 
     return UserModel;
 }

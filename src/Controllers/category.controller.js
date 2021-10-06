@@ -4,7 +4,7 @@ import categoryService from "../services/category.service";
 class CategoryController{
     async createCategory(req,res){
         try {
-           await categoryService.createCategory(req.body);
+           await categoryService.createCategory(req.userId,req.body);
            resHelper.created(res);
         } catch (error) {
             console.log(error)
@@ -13,7 +13,7 @@ class CategoryController{
 
     async fetchCategory(req,res){
         try {
-            const response = await categoryService.fetchCategory(req.params.categoryType);
+            const response = await categoryService.fetchCategory(req.userId,req.params.categoryType);
             resHelper.successCustom(res,response);
         } catch (error) {
             console.log(error)

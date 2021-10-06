@@ -4,7 +4,7 @@ import budgetService from '../services/buget.service';
 class BudgetController{
     async createBuget(req,res){
         try {
-            await budgetService.createBudget(req.body);
+            await budgetService.createBudget(req.userId,req.body);
             resHelper.created(res);
         } catch (error) {
             console.log(error);
@@ -13,7 +13,7 @@ class BudgetController{
 
     async fetchMonthlyBudget(req,res){
         try {
-            const response = await budgetService.fetchMonthlyBudget(req.param.month);
+            const response = await budgetService.fetchMonthlyBudget(req.userId);
             resHelper.successCustom(res,response)
         } catch (error) {
             console.log(error)
@@ -24,7 +24,7 @@ class BudgetController{
         try {
             const startDate = req.query.startDate;
             const endDate = req.query.endDate;
-            const response = await budgetService.fetchBudget(startDate,endDate);
+            const response = await budgetService.fetchBudget(req.userId,startDate,endDate);
             resHelper.successCustom(res,response)
         } catch (error) {
             console.log(error)
@@ -37,7 +37,7 @@ class BudgetController{
             const category = req.params.category;
             const startDate = req.query.startDate;
             const endDate = req.query.endDate;
-            const response = await budgetService.fetchBudgetItem(budgetType,category,startDate,endDate);
+            const response = await budgetService.fetchBudgetItem(req.userId,budgetType,category,startDate,endDate);
             resHelper.successCustom(res,response)
         } catch (error) {
             console.log(error)

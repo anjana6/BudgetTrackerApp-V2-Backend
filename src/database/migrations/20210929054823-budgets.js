@@ -9,6 +9,14 @@ module.exports = {
       primaryKey: true,
       allowNull: true
   },
+  user_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    references: {
+      model: "users",
+      key: "id",
+    },
+  },
   budget_type: {
       type: Sequelize.ENUM('expense','income'),
       allowNull: false

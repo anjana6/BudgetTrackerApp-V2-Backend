@@ -1,6 +1,7 @@
 import userRepository from "../Repository/user.repository";
 import bcrypt from 'bcrypt';
 import authMiddleware from "../middleware/auth.middleware";
+import { BadRequestException } from "../Helpers/ExceptionHandler";
 
 class UserService{
     async createUser(requestbody){
@@ -15,7 +16,7 @@ class UserService{
         const { email, password} = requestbody;
         const user = await userRepository.fetchUserByEmail(email);
         if (!user) {
-        throw new BadRequestException('Your userName is incorrect');
+        throw new BadRequestException('Your email is incorrect');
         }
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {

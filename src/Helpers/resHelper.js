@@ -23,6 +23,14 @@ class ResHelper{
         });
       }
 
+      badRequest(res, statusCode, message) {
+        res.status(statusCode).send({
+          success: false,
+          message: message,
+          data: null,
+        });
+      }
+
 }
 
 export default new ResHelper();

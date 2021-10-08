@@ -31,6 +31,17 @@ class BudgetController{
         }
     }
 
+    async fetchBudgetTotal(req,res){
+        try {
+            const startDate = req.query.startDate;
+            const endDate = req.query.endDate;
+            const response = await budgetService.fetchBudgetTotal(req.userId,startDate,endDate);
+            resHelper.successCustom(res,response)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async fetchBudgetItems(req,res){
         try {
             const budgetType = req.params.budgetType;
@@ -67,6 +78,15 @@ class BudgetController{
         try {
             await budgetService.deleteBudgetItem(req.params.itemId);
             resHelper.created(res);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async fetchBudgetLetestItem(req,res){
+        try {
+            const response = await budgetService.fetchBudgetLetestItem(req.userId);
+            resHelper.successCustom(res,response);
         } catch (error) {
             console.log(error)
         }

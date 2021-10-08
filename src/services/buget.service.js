@@ -27,6 +27,19 @@ class BudgetServie{
         return {income,expense}
     }
 
+    async fetchBudgetTotal(userId,startDate,endDate){
+        const incomeBudget = await budgetRepository.fetchBudgetTotal('income',userId,startDate,endDate)
+        const income = incomeBudget.reduce((total1, total2) => {
+           return total1 + parseFloat(total2.amount);
+          }, 0);
+
+          const expenseBudget = await budgetRepository.fetchBudgetTotal('expense',userId,startDate,endDate);
+          const expense = expenseBudget.reduce((total1,total2) => {
+              return total1 + parseFloat(total2.amount);
+          },0)
+        return {income,expense}
+    }
+
     async fetchBudget(userId,startDate,endDate){
         const expense =await budgetRepository.fetchBudget('expense',userId,startDate,endDate);
         const income = await budgetRepository.fetchBudget('income',userId,startDate,endDate)
@@ -53,6 +66,10 @@ class BudgetServie{
 
     deleteBudgetItem(itemId){
         return budgetRepository.deleteItemById(itemId);
+    }
+
+    fetchBudgetLetestItem(userId){
+        return budgetRepository.fetchBudgetLetestItem(userId)
     }
     
 }

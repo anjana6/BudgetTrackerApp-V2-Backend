@@ -11,5 +11,7 @@ budgetRoute.get('/api/budget/items/:budgetType/:category',authMiddleware.grantAc
 budgetRoute.get('/api/budget/item/:itemId',authMiddleware.grantAccess,budgetController.fetchItemDetails);
 budgetRoute.put('/api/budget/item/:itemId',authMiddleware.grantAccess,budgetController.updateBudgetItem);
 budgetRoute.delete('/api/budget/item/:itemId',authMiddleware.grantAccess,budgetController.deleteBudetItem);
+budgetRoute.get('/api/budget/latest',authMiddleware.grantAccess,budgetController.fetchBudgetLetestItem);
+budgetRoute.get('/api/budget/total',authMiddleware.grantAccess,budgetController.fetchBudgetTotal);
 
 export default budgetRoute;

@@ -20,6 +20,16 @@ class BugetRepository{
         }})
     }
 
+    fetchBudgetTotal(budgetType,userId,startDate,endDate){
+        return BudgetModel.findAll({where: {
+            budget_type: budgetType,
+            user_id: userId,
+            date: {
+                [Op.between]: [moment(Number(startDate)).startOf('day').format(),moment(Number(endDate)).endOf('day').format()]
+            }
+        }})
+    }
+
     fetchBudget(budgetType,userId,startDate,endDate){
         return BudgetModel.findAll({
             attributes: [
@@ -60,6 +70,16 @@ class BugetRepository{
 
     deleteItemById(itemId){
         return BudgetModel.destroy({where: {id: itemId}})
+    }
+
+    fetchBudgetLetestItem(userId){
+        return BudgetModel.findAll({
+            where: {user_id: userId},
+            order: [
+                ['date', 'ASC']
+            ],
+            limit: 5
+        })
     }
 
 }

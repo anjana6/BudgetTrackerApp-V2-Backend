@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "anjana",
-    "database": "budget_tracker",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "*anjanashakthi",
+    "database": "postgres",
+    "host": "db.kljzzvuixzyrhxqocgoe.supabase.co",
+    "dialect": "postgres",
+    "port": "5432"
   },
   "test": {
     "username": "root",

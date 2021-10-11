@@ -2,6 +2,8 @@ import userRepository from "../Repository/user.repository";
 import bcrypt from 'bcrypt';
 import authMiddleware from "../middleware/auth.middleware";
 import { BadRequestException } from "../Helpers/ExceptionHandler";
+import { defaultCategory } from "../Helpers/commonHelper";
+import categoryRepository from "../Repository/category.repository";
 
 class UserService{
     async createUser(requestbody){
@@ -9,7 +11,13 @@ class UserService{
         const salt =await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password,salt);
         requestbody.password = hashPassword;
-        return userRepository.createUser(requestbody)
+        const user = await userRepository.createUser(requestbody);
+        console.log('user',user);
+        defaultCategory.map(async category => {
+            category.user_id = user.id,
+            await categoryRepository.createCategory(category);
+        })
+        return user;
     }
 
     async logingUser(requestbody){

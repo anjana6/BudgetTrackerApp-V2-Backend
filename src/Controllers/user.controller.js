@@ -25,6 +25,16 @@ class UserController {
             console.log(error)
         }
     }
+
+    test(req,res){
+        try {
+            res.send('aaaaaaaaaaaa')
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
+
+
 
 export default new UserController;

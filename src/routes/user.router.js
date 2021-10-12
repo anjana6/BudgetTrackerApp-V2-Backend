@@ -6,6 +6,5 @@ const userRoute = express.Router();
 
 userRoute.post('/api/user/',userController.createUser);
 userRoute.post('/api/user/login',userController.loginUser);
-userRoute.get('/api/test',userController.test);
 
 export default userRoute;

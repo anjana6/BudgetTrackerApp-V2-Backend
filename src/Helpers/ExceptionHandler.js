@@ -13,18 +13,6 @@ class Exception extends Error{
     }
   }
   
-  class ForignKeyException extends Exception{
-    constructor(message){
-      super(message,ForignKeyException)
-    }
-  }
-  
-  class NotFoundException extends Exception{
-    constructor(message){
-      super(message,NotFoundException)  
-    }
-  }
-  
   class BadRequestException extends Exception{
     constructor(message){
       super(message,BadRequestException);
@@ -33,7 +21,5 @@ class Exception extends Error{
   
   export {
     AlreadyExistException,
-    ForignKeyException,
-    NotFoundException,
     BadRequestException
   }

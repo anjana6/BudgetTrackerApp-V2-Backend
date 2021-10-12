@@ -10,7 +10,6 @@ class AuthMiddleWare{
 
     async grantAccess(req,res,next){
         const token = req.headers.authorization;
-        console.log('88888888',token)
         if (!token) {
         return resHelper.unauthorized(res);
         }

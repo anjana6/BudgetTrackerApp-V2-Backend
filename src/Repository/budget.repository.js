@@ -33,7 +33,6 @@ class BugetRepository{
     fetchBudget(budgetType,userId,startDate,endDate){
         return BudgetModel.findAll({
             attributes: [
-                // specify an array where the first element is the SQL function and the second is the alias
                 [sequelize.fn('DISTINCT', sequelize.col('category')) ,'category'],
         
             ],

@@ -11,9 +11,4 @@ app.use(userRoute);
 app.use(budgetRoute);
 app.use(categoryRoute);
 
-// app.get('/', (req,res) => {
-//     console.log('heell');
-//     res.send('aaaaaaaaaaaa')
-// })
-
 app.listen(PORT, () => {console.log(`server runing on PORT ${PORT}`)})

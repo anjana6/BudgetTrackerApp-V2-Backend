@@ -1,4 +1,3 @@
-import { response } from "express";
 import { BadRequestException } from "../Helpers/ExceptionHandler";
 import resHelper from "../Helpers/resHelper";
 import userService from "../services/user.service";
@@ -23,14 +22,6 @@ class UserController {
                 return;
               }
             console.log(error)
-        }
-    }
-
-    test(req,res){
-        try {
-            res.send('aaaaaaaaaaaa')
-        } catch (error) {
-            console.log(error);
         }
     }
 }
